@@ -1,0 +1,73 @@
+body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  height: 100vh;
+  margin: 100px;
+  justify-items: center;
+  align-items: center;
+}
+
+.square {
+  height: 200px;
+  width: 200px;
+  border: 5px wheat solid;
+}
+.circle {
+  @extend .square;
+  border-radius: 50%;
+}
+.triangle {
+  margin-left: 50px;
+  height: 200px;
+  width: 200px;
+  //transform: translate(50%, 50%) rotate();
+  border-bottom: 4px wheat solid;
+  border-left: red transparent;
+  border-right: red transparent;
+}
+.triangle::before {
+  content: "";
+  position: absolute;
+  height: 203px;
+  width: 193px;
+  transform: translate(18%, 30%) rotate(30deg);
+  border-bottom: red transparent;
+  border-left: 4px wheat solid;
+  border-right: red transparent;
+}
+.triangle::after {
+  content: "";
+  position: absolute;
+  height: 203px;
+  width: 196px;
+  transform: translate(-18%, 30%) rotate(-30deg);
+  border-bottom: red transparent;
+  border-left: red transparent;
+  border-right: 4px wheat solid;
+}
+
+.x {
+  height: 100px;
+  width: 100px;
+  border-bottom: red transparent;
+  border-left: red transparent;
+  border-right: red transparent;
+}
+.x::before {
+  content: "";
+  position: absolute;
+  height: 250px;
+  width: 200px;
+  border-left: 4px wheat solid;
+  transform: translate(30%, 0) rotate(45deg);
+}
+.x::after {
+  content: "";
+  position: absolute;
+  height: 250px;
+  width: 200px;
+  border-right: 4px wheat solid;
+  transform: translate(-30%, 0) rotate(-45deg);
+}
