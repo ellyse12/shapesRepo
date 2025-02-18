@@ -1,31 +1,52 @@
 body {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 10px;
-  height: 100vh;
-  margin: 100px;
-  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: minmax(250px, auto);
+  gap: 20px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.square,
+.circle,
+.triangle,
+.x {
+  position: relative;
+  max-width: 100%;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.square, .circle {
-  height: 200px;
-  width: 200px;
+.square {
   border: 5px wheat solid;
 }
 
 .circle {
+  border: 5px wheat solid;
   border-radius: 50%;
 }
 
 .triangle {
-  margin-left: 50px;
+  position: relative;
   height: 200px;
   width: 200px;
   border-bottom: 4px wheat solid;
   border-left: red transparent;
   border-right: red transparent;
+  margin-left: 0;
 }
 
 .triangle::before {
@@ -51,27 +72,49 @@ body {
 }
 
 .x {
-  height: 100px;
-  width: 100px;
-  border-bottom: red transparent;
-  border-left: red transparent;
-  border-right: red transparent;
-}
-
-.x::before {
-  content: "";
-  position: absolute;
-  height: 250px;
+  position: relative;
   width: 200px;
-  border-left: 4px wheat solid;
-  transform: translate(30%, 0) rotate(45deg);
+  height: 200px;
+  background-color: transparent;
 }
 
+.x::before,
 .x::after {
   content: "";
   position: absolute;
-  height: 250px;
-  width: 200px;
-  border-right: 4px wheat solid;
-  transform: translate(-30%, 0) rotate(-45deg);
+  top: 0;
+  left: 50%;
+  width: 5px;
+  height: 100%;
+  background-color: wheat;
+}
+
+.x::before {
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.x::after {
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+  .square,
+  .circle,
+  .triangle,
+  .x {
+    transform: scale(0.75);
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  body {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 1024px) {
+  body {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }/*# sourceMappingURL=index.css.map */
